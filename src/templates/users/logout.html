@@ -1,0 +1,17 @@
+{% extends "users/login-page.html" %}
+{% load crispy_forms_tags %}
+{% block register-content %}
+	<span class="login100-form-title p-b-41">
+		Account Logout
+	</span>
+	<form class="login100-form validate-form" method="POST">
+		<h2>You have been Logged out</h2>
+		<div class="mt-2">
+			<small class="text-muted">
+				<a href="{% url 'login' %}">Log in again</a>
+			</small>
+		</div>
+	
+	</form>
+
+{% endblock %}

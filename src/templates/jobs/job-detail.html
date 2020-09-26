@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+	<div class="hero-wrap hero-wrap-2" style="background-image: url({% static 'jobs/images/bg_1.jpg' %});" data-stellar-background-ratio="0.5">
+	  <div class="overlay"></div>
+	  <div class="container">
+	    <div class="row no-gutters slider-text align-items-end justify-content-start">
+	      <div class="col-md-12 ftco-animate text-center mb-5">
+	      	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="{% url 'jobs:index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>About</span></p>
+	        <h1 class="mb-3 bread">Job Detail</h1>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 pr-lg-12">
+					<div class="row">
+					
+					<div class="col-md-12 ftco-animate " style="color: black;" >
+			            <div class="p-4 d-block d-lg-flex align-items-center" style="background-color: #fff; border-radius: 10px; box-shadow: 0px 0px 10px 1px #eee;">
+			              <div class="one-third mb-4 mb-md-0">
+			                <div class="job-post-item-header align-items-center">
+			                  	<h1 class="mr-3 text-black article-title">{{object.title}}</h1>
+			                	<span class="subadge text-black">
+			                		<h6 style="display: inline; font-weight: bold;">Job type:&nbsp</h6>
+			                	{{object.jobtype}}
+			                	</span>
+			                </div>
+			                <div>
+			                  	<span class="icon-layers"></span> 
+			                  	<h6 style="display: inline; font-weight: bold;">&nbsp Category:&nbsp</h6> 
+			                  	<span>{{object.category}}</span>
+			                 </div>
+			                <div class="job-post-item-body ">
+			                  <div class="mr-3">
+			                  	<span class="icon-building"></span>
+			                  	<h6 style="display: inline; font-weight: bold;">&nbsp Employer:&nbsp</h6> 
+			                  	<span>{{object.employer.organization}}</span>
+			                  </div>
+			                  <div class="mr-3">
+			                  	<span class="icon-my_location"></span> 
+			                  	<h6 style="display: inline; font-weight: bold;">&nbsp Location:&nbsp</h6> 
+			                  	<span>{{object.location}}</span>
+			                  </div>
+			                  <div>
+			                  	<span class="icon-calendar"></span> 
+			                  	<h6 style="display: inline; font-weight: bold;">&nbsp Date posted:&nbsp</h6> 
+			                  	<span>{{object.post_date}}</span>
+			                  </div>
+			                  <div>
+			                  	<span class="icon-calendar"></span> 
+			                  	<h6 style="display: inline; font-weight: bold;">&nbsp Date Expires:&nbsp</h6> 
+			                  	<span>{{object.expire_date}}</span>
+			                  </div>
+			                  <div>
+			                  	<span class="icon-briefcase"></span> 
+			                  	<h6 style="display: inline; font-weight: bold;">&nbsp Job experience (years):&nbsp</h6> 
+			                  	<span>{{object.experience}}</span>
+			                  </div>
+			                  <div>
+			                  	<span class="icon-money"></span> 
+			                  	<h6 style="display: inline; font-weight: bold;">&nbsp Salary:&nbsp</h6> 
+			                  	<span>{{object.salary}} Afg</span>
+			                  </div>
+			                </div>
+			                <div class='mt-3'><h6 style="font-weight: bold;">Description:</h6><p>{{object.description}}</p></div>
+			              </div>
+				                {% if user.user.user_type.id == 2 %}
+					                {% if object.employer.employerprofile.user.user.username == user.username %}
+						              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0" style="margin-bottom: 250px;">
+						                <a href="{% url 'jobs:job-update' object.id %}" class="btn btn-secondary py-2 mr-3"><span class="icon icon-edit"></span> Edit</a>
+						                <a href="{% url 'jobs:job-delete' object.id %}" class="btn btn-danger py-2"><span class="icon icon-trash"></span> Delete</a>
+						              </div>
+						            {% endif %}
+						        {% elif user.user.user_type.id == 3 and object.is_available %}
+						              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0" style="margin-bottom: 250px;">
+						                <a href="{% url 'jobs:job-apply' object.id %}" class="btn btn-primary py-2"><span class="icon icon-ok"></span> Apply</a>
+						              </div>
+
+						        {% elif object.is_available %}
+						              <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0" style="margin-bottom: 250px;">
+						                <a href="{% url 'jobs:job-apply' object.id %}" class="btn btn-primary py-2"><span class="icon icon-ok"></span> Apply</a>
+						              </div>
+						        {% else %}
+						        
+						        {% endif %}
+				            </div>
+				        </div><!-- end -->
+			        
+			    </div>
+	      </div>
+		</div>
+		</div>
+	</section>
+
+	
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "users/login-page.html" %}
+{% load crispy_forms_tags %}
+{% block register-content %}
+	<span class="login100-form-title p-b-41">
+		Account Registration
+	</span>
+	<form class="login100-form validate-form" method="POST">
+		
+		
+		<!--  <div class="wrap-input100 validate-input" data-validate = "Enter username">
+			<input class="input100" type="text" name="username" placeholder="User name">
+			<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+		</div>
+
+		<div class="wrap-input100 validate-input" data-validate="Enter password">
+			<input class="input100" type="password" name="pass" placeholder="Password">
+			<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+		</div> -->
+
+		<div class="container-login100-form-btn m-t-32">
+			<button class="login100-form-btn" type="submit">
+				<a href="{% url 'register_employer' %}" style="color: #fff; font-weight: bold; font-size: 1.2vw; letter-spacing: 2px;">Sign up as Employer</a>
+			</button>
+		</div>
+		<div class="container-login100-form-btn m-t-32">
+			<button class="login100-form-btn" type="button">
+				<a href="{% url 'register_jobseeker' %}" style="color: #fff; font-weight: bold; font-size: 1.2vw; letter-spacing: 2px;">Sign up as Job Seeker</a>
+			</button>
+		</div>
+		<div class="mt-4">
+			<small class="text-muted">
+				Already Have an Account? <a class="ml-2" href="{% url 'login' %}">Log In</a>
+			</small>
+		</div>
+	
+	</form>
+
+{% endblock %}

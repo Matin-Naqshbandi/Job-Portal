@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	{% load static %}
+    <title>URBAN JOBS</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/gif" href="{% static 'jobs/images/UJ-icon.gif' %}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'jobs/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'jobs/css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'jobs/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'jobs/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'jobs/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'jobs/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'jobs/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'jobs/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'jobs/css/jquery.timepicker.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'jobs/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'jobs/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'jobs/css/style.css' %}">
+  </head>
+  <body>
+    
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" style="top:0px;">
+	    <div class="container-fluid px-md-4	">
+	      <a class="navbar-brand" href="{% url 'jobs:index' %}">URBAN JOBS</a>
+        {% if messages %}
+          {% for message in messages %}
+            <span class="alert alert-{{message.tags}}">
+              {{ message }}
+            </span>
+          {% endfor %}
+        {% endif %}
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="{% url 'jobs:index' %}" class="nav-link"><span class="icon icon-home"></span> Home</a></li>
+	          <li class="nav-item"><a href="{% url 'jobs:jobslist' %}" class="nav-link"><span class="icon icon-briefcase"></span> Jobs</a></li>
+            {% if user.is_authenticated %}
+              {% if user.user.user_type.id == 2 %}
+                <li class="nav-item">
+                  <a href="{% url 'jobs:contact' %}" class="nav-link"><span class="icon icon-phone"></span> Feedback</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'jobs:candidates' %}" class="nav-link"><span class="icon icon-person"></span> Job Requests</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'jobs:jobpost-create' %}" class="nav-link"><span class="icon icon-plus"></span> Post a Job</a>
+                </li>
+                <li class="nav-item cta mr-md-1">
+                  <a href="{% url 'jobs:posted-jobs' user.username %}" class="nav-link"><span class="icon icon-list"></span> Posted Jobs</a>
+                </li>
+                <li class="nav-item cta mr-md-1">
+                  <a href="{% url 'profile' %}" class="nav-link">
+                    <img class="mr-3" style="max-height: 26px; max-width: 23px;" src="{{user.profile.picture.url}}"> 
+                    {{user.username}}
+                  </a>
+                </li>
+              {% elif user.user.user_type.id == 3 %}
+                <li class="nav-item">
+                  <a href="{% url 'jobs:contact' %}" class="nav-link"><span class="icon icon-phone"></span> Feedback</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'jobs:candidates' %}" class="nav-link"><span class="icon icon-building"></span> Job Requests</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'jobs:jobslist' %}" class="nav-link"><span class="icon icon-plus"></span> Want a Job</a>
+                </li>
+                <li class="nav-item cta mr-md-1">
+                  <a href="{% url 'jobs:jobslist' %}" class="nav-link"><span class="icon icon-list"></span> Applied Jobs</a>
+                </li>
+                <li class="nav-item cta mr-md-1">
+                  <a href="{% url 'profile' %}" class="nav-link">
+                    <img class="mr-3" style="max-height: 25px; max-width: 80px;" src="{{user.profile.picture.url}}"> 
+                    {{user.username}}
+                  </a>
+                </li>
+              {% else %}
+              <li class="nav-item cta mr-md-1">
+                  <a href="{% url 'jobs:contact' %}" class="nav-link"><span class="icon icon-phone"></span> Feedbacks</a>
+                </li>
+              <li class="nav-item cta mr-md-1">
+                  <a href="/admin" class="nav-link">Admin: {{user.username}}
+                  </a>
+              </li> 
+              {% endif %}
+              <li class="nav-item cta cta-colored">
+                <a href="{% url 'logout' %}" class="nav-link"><span class="icon icon-lock"></span> 
+                Logout
+                </a>
+              </li>
+              {% else %}
+    	          <li class="nav-item cta mr-md-1"><a href="{% url 'login' %}" class="nav-link"><span class="icon icon-unlock-alt"></span> Log In</a></li>
+    	          <li class="nav-item cta cta-colored"><a href="{% url 'register' %}" class="nav-link"><span class="icon icon-pencil"></span> Register</a></li>
+            {% endif %}
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+
+
+{% block content %} {% endblock %}
+
+    
+
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">URBAN JOBS JobPortal Project</h2>
+              <p>A Project by Matin Naqshbandi, Guldana Ruin, Sakina, Shokoriah, James Williams, Hadi, Nazir and Kai Khosrow to Prof. Sahnoosh on Web Project Subject. (2019)</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Employers</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="pb-1 d-block">Browse Candidates</a></li>
+                <li><a href="#" class="pb-1 d-block">Post a Job</a></li>
+                <li><a href="#" class="pb-1 d-block">Employer Listing</a></li>
+                <li><a href="#" class="pb-1 d-block">Resume Page</a></li>
+                <li><a href="#" class="pb-1 d-block">Dashboard</a></li>
+                <li><a href="#" class="pb-1 d-block">Job Packages</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Candidate</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="pb-1 d-block">Browse Jobs</a></li>
+                <li><a href="#" class="pb-1 d-block">Submit Resume</a></li>
+                <li><a href="#" class="pb-1 d-block">Dashboard</a></li>
+                <li><a href="#" class="pb-1 d-block">Browse Categories</a></li>
+                <li><a href="#" class="pb-1 d-block">My Bookmarks</a></li>
+                <li><a href="#" class="pb-1 d-block">Candidate Listing</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Account</h2>
+              <ul class="list-unstyled">
+                <li><a href="{% url 'profile' %}" class="pb-1 d-block">My Account</a></li>
+                <li><a href="{% url 'login' %}" class="pb-1 d-block">Sign In</a></li>
+                <li><a href="{% url 'register' %}" class="pb-1 d-block">Create Account</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                  <li><a href="tel:+93744445345"><span class="icon icon-phone"></span><span class="text">+93 74 444 5345</span></a></li>
+                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'jobs/js/jquery.min.js' %}"></script>
+  <script src="{% static 'jobs/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'jobs/js/popper.min.js' %}"></script>
+  <script src="{% static 'jobs/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'jobs/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'jobs/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'jobs/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'jobs/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'jobs/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'jobs/js/aos.js' %}"></script>
+  <script src="{% static 'jobs/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'jobs/js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'jobs/js/google-map.js' %}"></script>
+  <script src="{% static 'jobs/js/main.js' %}"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "users/login-page.html" %}
+{% load crispy_forms_tags %}
+{% block register-content %}
+	<span class="login100-form-title p-b-20">
+		{{user.username}} Profile
+		<br>
+		{{user.user.user_type}}
+	</span>
+	<div class="login100-form validate-form" style="width: 600px;">
+		<div class="content-section">
+			<div class="media mb-2">
+				<img class="mr-3" style="max-height: 600px; max-width: 180px; border-radius: 5px;" src="{{user.profile.picture.url}}">
+				<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ u_form|crispy }}
+				{{ js_form|crispy }}
+				{{ em_form|crispy }}
+				{{ p_form|crispy }}
+
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" type="submit">
+						Update
+					</button>
+				</div>
+			
+			</form>
+				<!-- <div class="media-body">
+					<h2 class="account-heading">{{user.username}}</h2>
+					Province: <p class="text-secondary" style="display: inline;">&nbsp{{user.profile.province}}</p>
+					<br>
+					Account Type: <p class="text-secondary" style="display: inline;">&nbsp{{user.profile.user_type}}</p>
+					<br>
+				</div> -->
+			</div>
+
+		</div>
+	</div>
+
+
+{% endblock %}

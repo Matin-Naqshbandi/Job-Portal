@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <div class="hero-wrap img" style="background-image: url({% static 'jobs/images/bg_1.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+      	
+      	<div class="row d-md-flex no-gutters slider-text align-items-center justify-content-center">
+	        <div class="col-md-10 d-flex align-items-center ftco-animate">
+	        	<div class="text text-center pt-5 mt-md-5">
+	        		<h1 class="mb-4" style="font-weight: bolder;letter-spacing: 3px;">URBAN JOBS</h1>
+	        		<p class="mb-4 mt-4">Find Job, Employment, and Career Opportunities</p>
+	            <h1 class="mb-5">The Eassiest Way to Get Your New Job</h1>
+							<div class="ftco-counter ftco-no-pt ftco-no-pb">
+			        	<div class="row">
+				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				            <div class="block-18">
+				              <div class="text d-flex">
+				              	<div class="icon mr-2">
+				              		<span class="flaticon-worldwide"></span>
+				              	</div>
+				              	<div class="desc text-left">
+					                <strong class="number" data-number="{{EmployerProfile.count}}00">0</strong>
+					                <span>Employers</span>
+				                </div>
+				              </div>
+				            </div>
+				          </div>
+				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				            <div class="block-18 text-center">
+				              <div class="text d-flex">
+				              	<div class="icon mr-2">
+				              		<span class="flaticon-visitor"></span>
+				              	</div>
+				              	<div class="desc text-left">
+					                <strong class="number" data-number="{{JobseekerProfile.count}}00">0</strong>
+					                <span>Jobseekers</span>
+					              </div>
+				              </div>
+				            </div>
+				          </div>
+				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				            <div class="block-18 text-center">
+				              <div class="text d-flex">
+				              	<div class="icon mr-2">
+				              		<span class="flaticon-resume"></span>
+				              	</div>
+				              	<div class="desc text-left">
+					                <strong class="number" data-number="{{JobPost.count}}00">0</strong>
+					                <span>Jobs</span>
+					              </div>
+				              </div>
+				            </div>
+				          </div>
+				        </div>
+			        </div>
+							<!-- <div class="ftco-search my-md-5">
+								<div class="row">
+			            <div class="col-md-12 nav-link-wrap">
+				            <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				              <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Find a Job</a>
+
+				              <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Find a Candidate</a>
+
+				            </div>
+				          </div>
+				          <div class="col-md-12 tab-wrap">
+				            
+				            <div class="tab-content p-4" id="v-pills-tabContent">
+
+				              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+				              	<form action="#" class="search-job">
+				              		<div class="row no-gutters">
+				              			<div class="col-md mr-md-2">
+				              				<div class="form-group">
+					              				<div class="form-field">
+					              					<div class="icon"><span class="icon-briefcase"></span></div>
+									                <input type="text" class="form-control" placeholder="eg. Garphic. Web Developer">
+									              </div>
+								              </div>
+				              			</div>
+				              			<div class="col-md mr-md-2">
+				              				<div class="form-group">
+				              					<div class="form-field">
+					              					<div class="select-wrap">
+							                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+							                      <select name="" id="" class="form-control">
+							                      	<option value="">Category</option>
+							                      	{% for jobtype in JobType %}
+							                      	<option value="{{jobtype.jobtype}}">{{jobtype.jobtype}}</option>
+							                      	{% endfor %}
+							                      </select>
+							                    </div>
+									              </div>
+								              </div>
+				              			</div>
+
+				              			<div class="col-md mr-md-2">
+				              				<div class="form-group">
+				              					<div class="form-field">
+					              					<div class="select-wrap">
+					              					<div class="icon"><span class="icon-map-marker"></span></div>
+							                      <select name="" id="" class="form-control">
+							                      	<option value="">Location</option>
+							                      	{% for job in JobPost %}
+							                      	<option value="{{job.location}}">{{job.location}}</option>
+							                      	{% endfor %}
+							                      </select>
+							                    </div>
+									              </div>
+								              </div>
+				              			</div>
+
+				              			<div class="col-md">
+				              				<div class="form-group">
+				              					<div class="form-field">
+								                	<button type="submit" class="form-control btn btn-primary">Search</button>
+									              </div>
+								              </div>
+				              			</div>
+				              		</div>
+				              	</form>
+				              </div>
+
+				              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
+				              	<form action="#" class="search-job">
+				              		<div class="row">
+				              			<div class="col-md">
+				              				<div class="form-group">
+					              				<div class="form-field">
+					              					<div class="icon"><span class="icon-user"></span></div>
+									                <input type="text" class="form-control" placeholder="eg. Adam Scott">
+									              </div>
+								              </div>
+				              			</div>
+				              			<div class="col-md">
+				              				<div class="form-group">
+				              					<div class="form-field">
+					              					<div class="select-wrap">
+							                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+							                      <select name="" id="" class="form-control">
+							                      	<option value="">Category</option>
+							                      	{% for jobtype in JobType %}
+							                      	<option value="">{{jobtype.jobtype}}</option>
+							                      	{% endfor %}
+							                      </select>
+							                    </div>
+									              </div>
+								              </div>
+				              			</div>
+
+				              			<div class="col-md mr-md-2">
+				              				<div class="form-group">
+				              					<div class="form-field">
+					              					<div class="select-wrap">
+					              					<div class="icon"><span class="icon-map-marker"></span></div>
+							                      <select name="" id="" class="form-control">
+							                      	<option value="">Province</option>
+							                      	{% for user in User %}
+							                      	<option value="{{user.province}}">{{user.profile.province}}</option>
+							                      	{% endfor %}
+							                      </select>
+							                    </div>
+									              </div>
+								              </div>
+				              			</div>
+
+				              			<div class="col-md">
+				              				<div class="form-group">
+				              					<div class="form-field">
+									                <button type="submit" class="form-control btn btn-primary">Search</button>
+									              </div>
+								              </div>
+				              			</div>
+				              		</div>
+				              	</form>
+				              </div>
+				            </div>
+				          </div>
+				        </div>
+			        </div> -->
+	          </div>
+	        </div>
+	    	</div>
+      </div>
+    </div>
+
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Job Categories</span>
+            <h2 class="mb-0">Top Categories</h2>
+          </div>
+        </div>
+        <div class="row">
+        	{% for category in Category %}
+        	<div class="col-md-3 ftco-animate">
+        		<ul class="category text-center">
+        			<li><a href="{% url 'jobs:category-jobs' category.category %}">{{category.category}}
+        			 <!-- <br><span class="number">354</span> <span>Open position</span> -->
+        			 <i class="ion-ios-arrow-forward"></i>
+        			</a></li>
+        		</ul>
+        	</div>
+        	{% endfor %}
+        </div>
+    	</div>
+    </section>
+
+
+		<section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 pr-lg-5">
+						<div class="row justify-content-center pb-3">
+		          <div class="col-md-12 heading-section ftco-animate">
+		          	<span class="subheading">Recently Added Jobs</span>
+		            <h2 class="mb-4">Featured Jobs Posts For This Week</h2>
+		          </div>
+		        </div>
+						<div class="row">
+				{% for job in JobPost %}
+				<div class="col-md-12 ftco-animate" >
+		            <div class="job-post-item p-4 d-block d-lg-flex align-items-center" style="border-radius: 10px;">
+		              <div class="one-third mb-4 mb-md-0">
+		                <div class="job-post-item-header align-items-center" style="color:grey;" >
+		                 	<span class="icon-building"></span><p class="mr-3" style="display: inline;"><a href="{% url 'jobs:employer-jobs' job.employer.employerprofile.user.user.username %}">&nbsp{{job.employer.employerprofile.organization}}</a></p>
+		                	<span class="icon-calendar"></span><p class="mr-3" style="display: inline;">&nbsp{{job.post_date|timesince}} ago</p>
+		                  	<h2 class="mr-3 text-black"><a href="{% url 'jobs:job-detail' job.id %}">{{job.title}}</a></h2>
+		                </div>
+		                <div class="job-post-item-body d-block d-md-flex">
+		                	<div class="mr-3"><span class="icon-layers"></span><a href="{% url 'jobs:category-jobs' job.category %}"> {{job.category}} </a></div>
+		                 	<div class="mr-3"><span class="icon-money"></span> {{job.salary}} AFG</div>
+		                	<div class="mr-3"><span class="icon-my_location"></span><a href="{% url 'jobs:location-jobs' job.location %}">{{job.location}}</a></div>
+		                	<div><a href="{% url 'jobs:type-jobs' job.jobtype %}"><span>{{job.jobtype}}</span></a></div>
+		                </div>
+		              </div>
+
+		              <div class="one-forth ml-1 d-flex align-items-center mt-4 md-md-0">
+		              	
+		                <a href="{% url 'jobs:job-detail' job.id %}" class="btn btn-primary py-2">View Job</a>
+		              </div>
+		            </div>
+		          </div><!-- end -->
+		        {% endfor %}
+		        </div>
+		      </div>
+
+		      <div class="col-lg-3 sidebar">
+		        <div class="row justify-content-center pb-3">
+		          <div class="col-md-12 heading-section ftco-animate">
+		            <h2 class="mb-4">Top Recruiters</h2>
+		          </div>
+		        </div>
+		     	{% for employer in EmployerProfile %}
+		        <div class="sidebar-box ftco-animate">
+		        	<div class="">
+			        	<a href="{% url 'jobs:employer-jobs' employer.employerprofile.user.user.username %}" class="company-wrap"><img src="{{employer.employerprofile.picture.url}}" class="img-fluid" alt="Colorlib Free Template" style = "border-radius: 5px;"></a>
+			        	<div class="text p-3">
+			        		<h3><a href="{% url 'jobs:employer-jobs' employer.employerprofile.user.user.username %}">{{employer.organization}}</a></h3>
+<!-- 			        		<p><span class="number">500</span> <span>Open position</span></p>
+ -->			        	</div>
+		        	</div>
+		        </div>
+		        {% endfor %}
+		        
+		      </div>
+				</div>
+			</div>
+		</section>
+
+
+
+    
+
+    <section class="ftco-section ftco-candidates bg-primary">
+    	<div class="container">
+    		<div class="row justify-content-center pb-3">
+          <div class="col-md-10 heading-section heading-section-white text-center ftco-animate">
+          	<span class="subheading">Employers</span>
+            <h2 class="mb-4">Latest Joined Organizations</h2>
+          </div>
+        </div>
+    	</div>
+    	<div class="container">
+        <div class="row">
+        	<div class="col-md-12 ftco-animate">
+        		<div class="carousel-candidates owl-carousel">
+        			{% for employer in EmployerProfile %}
+        			<div class="item">
+		        		<a href="{% url 'jobs:employer-jobs' employer.employerprofile.user.user.username %}" class="team text-center">
+		        			<div class="img" style="background-image: url({{employer.employerprofile.picture.url}});"></div>
+		        			<h2>{{employer.organization}}</h2>
+		        			<span class="position">{{employer.user.user.province}}</span>
+		        		</a>
+        			</div>
+        			{% endfor %}
+        			
+        		</div>
+        	</div>
+        </div>
+    	</div>
+    </section>
+
+    
+{% endblock content %}

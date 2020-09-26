@@ -1,0 +1,29 @@
+{% for job in JobPost %}
+							<div class="col-md-12 ftco-animate" >
+							<div class="job-post-item p-4 d-block d-lg-flex align-items-center" style="border-radius: 10px;">
+								<div class="one-third mb-4 mb-md-0">
+								<div class="job-post-item-header align-items-center" style="color:grey;" >
+								 	<span class="icon-building"></span><p class="mr-3" style="display: inline;"><a href="{% url 'jobs:employer-jobs' job.employer.employerprofile.user.user.username %}">&nbsp{{job.employer.employerprofile.organization}}</a></p>
+									<span class="icon-calendar"></span><p class="mr-3" style="display: inline;">&nbspPosted:  {{job.post_date|timesince}} ago</p>
+									{% if job.is_available %}
+									<span class="icon-calendar"></span><p class="mr-3" style="display: inline;">&nbspExpires:  {{job.expire_date|timeuntil}} later</p>
+									{% else %}
+									<span class="icon-calendar"></span><p class="mr-3" style="display: inline;">&nbspThis job post is expired</p>
+									{% endif %}
+								  	<h2 class="mr-3 text-black"><a href="{% url 'jobs:job-detail' job.id %}">{{job.title}}</a></h2>
+								</div>
+								<div class="job-post-item-body d-block d-md-flex">
+									<div class="mr-3"><span class="icon-layers"></span><a href="{% url 'jobs:category-jobs' job.category %}"> {{job.category}} </a></div>
+								 	<div class="mr-3"><span class="icon-money"></span> {{job.salary}} AFG</div>
+									<div class="mr-3"><span class="icon-my_location"></span><a href="{% url 'jobs:location-jobs' job.location %}">{{job.location}}</a></div>
+									<div><a href="{% url 'jobs:type-jobs' job.jobtype %}"><span>{{job.jobtype}}</span></a></div>
+								</div>
+								</div>
+
+								<div class="one-forth ml-1 d-flex align-items-center mt-4 md-md-0">
+									
+								<a href="{% url 'jobs:job-detail' job.id %}" class="btn btn-primary py-2">View Job</a>
+								</div>
+							</div>
+						</div><!-- end -->
+					    {% endfor %}
